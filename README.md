@@ -38,8 +38,8 @@ The AutoML results in better accuracy but takes longer to find the better result
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
 
-Measure the fairness of models
-Assess which users would be impacted by a specific model and compare multiple models on fairness
+Measure the fairness of models.
+Assess which users would be impacted by a specific model and compare multiple models on fairness. Make aware of what biases the model is applying to users. 
 
 ## Proof of cluster clean up
 Deleted in code

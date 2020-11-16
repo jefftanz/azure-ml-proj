@@ -110,14 +110,16 @@ The Voting Enemble had the best Accuracy
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
 
+Accuracy
 Both the approaches follow simlar steps but the differerence is in the configuration. The first approach our ML model is fixed and we use hyperdrive to find optimal hyperparams while in second approach dif models are generated with their own optimal hyperparam values and the best model is then selected. The first approach took around 10 - 15 min and accuracy was around 0.914 and the automl approach took much longer 25 - 30 min and only had a slightly better accuracy around 0.917.
+
+Architecture
+The first architecture we used scikit-learn Logsitric Regression and tuned the hyperparemeters using HyperDrive. The second architecture we used AutoML to build and optimize a model on the same dataset. When we compare the results the best performing model was through the AutoML process and the VotingEnsemble was the most accurate model. 
 
 The AutoML results in better accuracy but takes longer to find the better result. It combines multiple ML algorithms so it makes sence that it will find a better result over time.  
 
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
-
-Some potential risks and best practices to mitigate can be found here: https://docs.microsoft.com/en-us/azure/machine-learning/concept-manage-ml-pitfalls
 
 Identify over-fitting with the data
 The best way to prevent over-fitting is to follow ML best-practices including:
@@ -129,16 +131,9 @@ Regularization and hyperparameter optimization
 Model complexity limitations
 Cross-validation
 
-Handle imbalanced Data
-Imbalanced data can lead to a falsely perceived positive effect of a model's accuracy because the input data has bias towards one class.
+I would try testing out different performance metrics including balanced_accuracy, weighted_accuracy, and AUC_weighted which calculates the contribution of every class based on the relative number of samples representing that class, hence is more robust against imbalance.
 
-As part of its goal of simplifying the machine learning workflow, automated ML has built in capabilities to help deal with imbalanced data such as,
-
-A weight column: automated ML supports a column of weights as input, causing rows in the data to be weighted up or down, which can be used to make a class more or less "important".
-
-The algorithms used by automated ML detect imbalance when the number of samples in the minority class is equal to or fewer than 20% of the number of samples in the majority class, where minority class refers to the one with fewest samples and majority class refers to the one with most samples. Subsequently, AutoML will run an experiment with sub-sampled data to check if using class weights would remedy this problem and improve performance. If it ascertains a better performance through this experiment, then this remedy is applied.
-
-Use a performance metric that deals better with imbalanced data. For example, the AUC_weighted is a primary metric that calculates the contribution of every class based on the relative number of samples representing that class, hence is more robust against imbalance.
+I could also try a different assortment of sampling methods for hyperparameters for a better result. 
 
 
 ## Proof of cluster clean up
